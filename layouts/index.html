@@ -1,0 +1,32 @@
+{{ partial "head" . }}
+  <body>
+
+    <div id="wrap">
+      {{ partial "header" . }}
+      <section id="projects">
+        <div class="container">
+          <h3>Side effects</h3>
+          <div class="panel panel-default">
+            <div class="panel-body">
+            {{ if .Data.Pages }}
+              {{ range .Data.Pages.ByWeight }}
+              <h5>
+                <i class="fa fa-github"></i>&nbsp;&nbsp;
+                <strong><a href="{{ .Params.project_url }}">{{ .Title | markdownify }}</a></strong>
+                {{ or .Description .Content }}
+              </h5>
+              {{ end }}
+            {{ else }}
+            Nothing to see here (yet)
+            {{ end }}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Footer -->
+    {{ partial "footer" . }}
+
+  </body>
+</html>
